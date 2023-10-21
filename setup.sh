@@ -25,8 +25,8 @@ while true; do
 done
 
 echo -e "\e[32m* Setting up watermark..\e[0m"
+awk '/^#?Banner/{gsub(/#?Banner .*/, "Banner /etc/welcome"); found=1}1;END{if(!found) print "Banner /etc/welcome"}' /etc/ssh/sshd_config > /tmp/sshd_config_temp && sudo mv /tmp/sshd_config_temp /etc/ssh/sshd_config
 
-# Prompt for domain name
 echo -e "\n* Enter your domain (e.g., example.com):"
 read -r host
 # Setup MOTD
