@@ -83,4 +83,9 @@ EOL
 # Restart SSH
 sudo systemctl restart ssh
 
+rm /etc/hostname
+
+cat <<EOL | sudo tee -a /etc/hostname > /dev/null
+$host
+EOL
 echo -e "\e[32m* Domain setup completed\e[0m"
